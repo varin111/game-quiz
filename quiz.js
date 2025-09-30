@@ -5,7 +5,7 @@
 const questions = [
   {
     category: 'Computers',
-    image: 'img/keyboard.png', // Keyboard
+    image: 'keyboard.png', // Keyboard
     text: 'What is this?',
     answers: ['Mouse', 'Monitor', 'Keyboard'],
     correct: 2,
@@ -13,7 +13,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: 'img/mouse.png', // Mouse
+    image: 'mouse.png', // Mouse
     text: 'What part is this?',
     answers: ['Printer', 'Mouse', 'Speaker'],
     correct: 1,
@@ -21,7 +21,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: 'img/word.png', // Word icon
+    image: 'word.png', // Word icon
     text: 'What program is this?',
     answers: ['Paint', 'Word', 'Calculator'],
     correct: 1,
@@ -29,7 +29,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: 'img/monitor.png', // Monitor
+    image: 'monitor.png', // Monitor
     text: 'What part is this?',
     answers: ['Monitor', 'Keyboard', 'Mouse'],
     correct: 0,
@@ -37,7 +37,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: 'img/printer.png', // Printer
+    image: 'printer.png', // Printer
     text: 'What does this do?',
     answers: ['Prints papers', 'Plays music', 'Shows movies'],
     correct: 0,
@@ -45,7 +45,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: 'img/cpu.png', // CPU
+    image: 'cpu.png', // CPU
     text: 'What is the brain of the computer?',
     answers: ['CPU', 'Mouse', 'Monitor'],
     correct: 0,
@@ -53,7 +53,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: 'img/usb.png', // USB
+    image: 'usb.png', // USB
     text: 'What is this port called?',
     answers: ['HDMI', 'USB', 'VGA'],
     correct: 1,
@@ -61,7 +61,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: 'img/speaker.png', // Speaker
+    image: 'speaker.png', // Speaker
     text: 'What part makes sound?',
     answers: ['Speaker', 'Printer', 'Keyboard'],
     correct: 0,
@@ -70,7 +70,7 @@ const questions = [
   
   {
     category: 'Computers',
-    image: 'img/tablet.png', // Tablet
+    image: 'tablet.png', // Tablet
     text: 'What is this device?',
     answers: ['Tablet', 'Printer', 'Speaker'],
     correct: 0,
@@ -87,11 +87,6 @@ const endScreen = document.getElementById('endScreen');
 const home = document.querySelector('.home');
 const coinSound = document.getElementById('coinSound');
 const cheerSound = document.getElementById('cheerSound');
-
-// Add sound for button clicks and correct/incorrect answers
-const clickSound = new Audio('click.mp3');
-const correctSound = new Audio('correct.mp3');
-const wrongSound = new Audio('wrong.mp3');
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -128,20 +123,9 @@ function showQuestion() {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.textContent = ans;
-    btn.onclick = () => {
-      playClick();
-      selectAnswer(idx);
-    };
+    btn.onclick = () => selectAnswer(idx);
     answersDiv.appendChild(btn);
   });
-}
-
-function playClick() {
-  let soundOn = localStorage.getItem('quizSoundOn');
-  if (soundOn === null || soundOn === 'true') {
-    clickSound.currentTime = 0;
-    clickSound.play();
-  }
 }
 
 function selectAnswer(idx) {
@@ -151,35 +135,17 @@ function selectAnswer(idx) {
     score += q.coins;
     feedback.innerHTML = '<div class="stars">✨🎉 +'+q.coins+' coins!</div>';
     playSound(coinSound);
-    playCorrect();
     setTimeout(() => {
       nextQuestion();
     }, 1200);
   } else {
     feedback.innerHTML = '<div style="color:#ff4e50;font-size:1.3em;">❌ Try again next time!</div>';
-    playWrong();
     setTimeout(() => {
       nextQuestion();
     }, 1200);
   }
   // Disable all answer buttons
   Array.from(document.getElementsByClassName('answer-btn')).forEach(btn => btn.disabled = true);
-}
-
-function playCorrect() {
-  let soundOn = localStorage.getItem('quizSoundOn');
-  if (soundOn === null || soundOn === 'true') {
-    correctSound.currentTime = 0;
-    correctSound.play();
-  }
-}
-
-function playWrong() {
-  let soundOn = localStorage.getItem('quizSoundOn');
-  if (soundOn === null || soundOn === 'true') {
-    wrongSound.currentTime = 0;
-    wrongSound.play();
-  }
 }
 
 function nextQuestion() {
