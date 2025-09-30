@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Kids Quiz Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container home">
+    <img src="aga.png" class="logo" alt="Quiz Logo">
+    <h1 class="animated-title">Kids Computer Quiz!</h1>
+    <div class="animated-coins"></div>
+    <button id="startQuiz" class="main-btn bounce">Start Quiz</button>
+    <button id="viewHistory" class="main-btn">View Score History</button>
+    <button id="settingsBtn" class="main-btn">Settings</button>
+    <div style="margin-top:18px;font-size:1.1em;color:#174ea6;">Learn and have fun with computers!</div>
+  </div>
+  <div id="quizContainer" class="container" style="display:none;"></div>
+  <div id="endScreen" class="container" style="display:none;"></div>
+  <div id="historyScreen" class="container" style="display:none;"></div>
+  <div id="settingsScreen" class="container" style="display:none;"></div>
+  <audio id="coinSound" src="assets/coin.mp3" preload="auto"></audio>
+  <audio id="cheerSound" src="assets/cheer.mp3" preload="auto"></audio>
+  <script src="quiz.js"></script>
+  <script>
+    // Animated title effect
+    const title = document.querySelector('.animated-title');
+    if (title) {
+      title.innerHTML = title.textContent.split('').map((c,i) => `<span style="display:inline-block;animation:wave 1.2s infinite;animation-delay:${i*0.08}s">${c}</span>`).join('');
+    }
+    // Animated coins
+    function createCoin() {
+      const coin = document.createElement('div');
+      coin.className = 'coin-anim';
+      coin.style.left = Math.random()*90+5+'%';
+      coin.style.animationDuration = (1.8+Math.random()*1.2)+'s';
+      document.querySelector('.animated-coins').appendChild(coin);
+      setTimeout(()=>coin.remove(), 2200);
+    }
+    setInterval(createCoin, 600);
+  </script>
+</body>
+</html>
