@@ -5,7 +5,7 @@
 const questions = [
   {
     category: 'Computers',
-    image: './img/keyboard.png', // Keyboard
+    image: 'img/keyboard.png', // Keyboard
     text: 'What is this?',
     answers: ['Mouse', 'Monitor', 'Keyboard'],
     correct: 2,
@@ -13,7 +13,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: './img/mouse.png', // Mouse
+    image: 'img/mouse.png', // Mouse
     text: 'What part is this?',
     answers: ['Printer', 'Mouse', 'Speaker'],
     correct: 1,
@@ -21,7 +21,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: './img/word.png', // Word icon
+    image: 'img/word.png', // Word icon
     text: 'What program is this?',
     answers: ['Paint', 'Word', 'Calculator'],
     correct: 1,
@@ -29,7 +29,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: './img/monitor.png', // Monitor
+    image: 'img/monitor.png', // Monitor
     text: 'What part is this?',
     answers: ['Monitor', 'Keyboard', 'Mouse'],
     correct: 0,
@@ -37,7 +37,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: './img/printer.png', // Printer
+    image: 'img/printer.png', // Printer
     text: 'What does this do?',
     answers: ['Prints papers', 'Plays music', 'Shows movies'],
     correct: 0,
@@ -45,7 +45,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: './img/cpu.png', // CPU
+    image: 'img/cpu.png', // CPU
     text: 'What is the brain of the computer?',
     answers: ['CPU', 'Mouse', 'Monitor'],
     correct: 0,
@@ -53,7 +53,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: './img/usb.png', // USB
+    image: 'img/usb.png', // USB
     text: 'What is this port called?',
     answers: ['HDMI', 'USB', 'VGA'],
     correct: 1,
@@ -61,7 +61,7 @@ const questions = [
   },
   {
     category: 'Computers',
-    image: './img/speaker.png', // Speaker
+    image: 'img/speaker.png', // Speaker
     text: 'What part makes sound?',
     answers: ['Speaker', 'Printer', 'Keyboard'],
     correct: 0,
@@ -70,7 +70,7 @@ const questions = [
   
   {
     category: 'Computers',
-    image: './img/tablet.png', // Tablet
+    image: 'img/tablet.png', // Tablet
     text: 'What is this device?',
     answers: ['Tablet', 'Printer', 'Speaker'],
     correct: 0,
