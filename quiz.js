@@ -103,6 +103,7 @@ function startQuiz() {
   home.style.display = 'none';
   endScreen.style.display = 'none';
   quizContainer.style.display = 'block';
+  quizContainer.classList.add('quiz-active'); // Add this line
   showQuestion();
 }
 
@@ -159,6 +160,7 @@ function nextQuestion() {
 
 function showEndScreen() {
   quizContainer.style.display = 'none';
+  quizContainer.classList.remove('quiz-active'); // Remove on end
   endScreen.style.display = 'block';
   saveScoreHistory(score);
   let message = '';
@@ -181,6 +183,7 @@ function showEndScreen() {
 function goHome() {
   endScreen.style.display = 'none';
   quizContainer.style.display = 'none';
+  quizContainer.classList.remove('quiz-active'); // Remove on home
   home.style.display = 'block';
 }
 

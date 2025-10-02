@@ -6,17 +6,7 @@ body {
   min-height: 100vh;
 }
 body::before {
-  content: '';
-  position: fixed;
-  top: 50%; left: 50%;
-  width: 900px;
-  height: 900px;
-  transform: translate(-50%, -50%);
-  background: url('aga.png') center center no-repeat;
-  background-size: contain;
-  opacity: 0.08;
-  z-index: 0;
-  pointer-events: none;
+  display: none !important;
 }
 @media (max-width: 900px) {
   body::before {
@@ -35,8 +25,59 @@ body::before {
   text-align: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+}
+/* Remove .container::before for all containers by default */
+.container::before {
+  display: none !important;
+}
+
+/* Only show background logo in .container when on the quiz page */
+.container.quiz-active::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background: url('aga.png') center center no-repeat;
+  background-size: contain;
+  opacity: 0.10;
+  z-index: 0;
+  pointer-events: none;
+  /* Safari and cross-browser fixes */
+  will-change: opacity, transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate(-50%, -50%);
+  /* Mask for Safari and modern browsers */
+  -webkit-mask-image: url('aga.png');
+  mask-image: url('aga.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+@media (max-width: 900px) {
+  .container.quiz-active::before {
+    width: 95%;
+    height: 95%;
+  }
 }
 .container, .home, #quizContainer, #endScreen, #historyScreen, #settingsScreen {
+  position: relative;
+  z-index: 1;
+}
+.container.quiz-active {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+/* Ensure quiz content is above the background logo */
+#quizContainer > * {
   position: relative;
   z-index: 1;
 }
@@ -114,8 +155,7 @@ img.quiz-img {
   }
 }
 .logo {
-
-    width: 140px;
+  width: 140px;
   height: 140px;
   object-fit: contain;
   display: block;
@@ -161,4 +201,13 @@ img.quiz-img {
   0% { transform: scale(1) translateY(0); }
   60% { transform: scale(1.08) translateY(-8px); }
   100% { transform: scale(1) translateY(0); }
+}
+.animated-title, h1 {
+  white-space: normal;
+}
+.animated-title .break {
+  display: block;
+}
+.nowrap {
+  white-space: nowrap;
 }
